@@ -1,5 +1,8 @@
 package bhavya.springProject.recipies.domain;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.Configuration;
+
 import javax.persistence.*;
 import java.util.Set;
 
