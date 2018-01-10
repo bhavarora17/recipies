@@ -30,14 +30,43 @@ public class Recipe {
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
 	private Set<Ingredient> ingregient;
-	//todo
-	//private Difficulty difficulty.
 	
 	@Lob
 	private Byte[] image;
 	
+	@Enumerated(value = EnumType.STRING)
+	private Difficulty difficulty;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Notes notes;
+	
+	@ManyToMany
+	@JoinTable(name = "recipe_category", joinColumns = @JoinColumn(name = "recipe_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
+	private Set<Category> categories;
+	
+	public Set<Category> getCategories() {
+		return categories;
+	}
+	
+	public void setCategories(Set<Category> categories) {
+		this.categories = categories;
+	}
+	
+	public Set<Ingredient> getIngregient() {
+		return ingregient;
+	}
+	
+	public void setIngregient(Set<Ingredient> ingregient) {
+		this.ingregient = ingregient;
+	}
+	
+	public Difficulty getDifficulty() {
+		return difficulty;
+	}
+	
+	public void setDifficulty(Difficulty difficulty) {
+		this.difficulty = difficulty;
+	}
 	
 	public String getDescription() {
 		return description;
